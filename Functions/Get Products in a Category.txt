@@ -1,0 +1,18 @@
+CREATE FUNCTION dbo.GetProductsByCategory
+(
+    @CategoryID int
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT * FROM Product
+    WHERE CategoryID = @CategoryID
+);
+
+
+
+DECLARE @CategoryID int = 3;
+
+SELECT * FROM dbo.GetProductsByCategory(@CategoryID);
+

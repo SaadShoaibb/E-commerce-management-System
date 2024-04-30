@@ -1,0 +1,23 @@
+CREATE FUNCTION dbo.CalculateOrderTotalPrice
+(
+    @OrderID int
+)
+RETURNS DECIMAL(19, 2)
+AS
+BEGIN
+    DECLARE @TotalPrice DECIMAL(19, 2);
+
+    SELECT @TotalPrice = SUM(vp.Price * op.Quantity)
+    FROM OrderedProduct op
+    INNER JOIN VendorProduct vp ON op.VendorProductID = vp.VendorProductID
+    WHERE op.OrderID = @OrderID;
+
+    RETURN @TotalPrice;
+END;
+
+
+
+
+DECLARE @OrderID int = 16;
+SELECT dbo.CalculateOrderTotalPrice(@OrderID) AS TotalPrice;
+

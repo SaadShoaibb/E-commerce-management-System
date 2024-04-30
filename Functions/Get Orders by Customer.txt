@@ -1,0 +1,21 @@
+CREATE FUNCTION dbo.GetOrdersByCustomer
+(
+    @CustomerID int
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT * FROM Orders
+    WHERE CustomerID = @CustomerID
+);
+
+
+
+
+
+
+DECLARE @CustomerID int = 3;
+
+
+SELECT * FROM dbo.GetOrdersByCustomer(@CustomerID);
