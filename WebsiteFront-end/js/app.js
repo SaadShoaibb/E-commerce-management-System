@@ -12,12 +12,16 @@ app.use(express.static('public'));
 
 // Configure MS SQL Server connection
 const config = {
-    user: '',
-    password: '',
-    server: 'LAPTOP-L7M02C6E',
+    server: 'AFFINITY',
     database: 'Ecommerce',
     options: {
-        encrypt: true, // Use this if you're on Windows Azure
+        encrypt: false,  // Set to false if not on Azure
+    },
+    authentication: {
+        type: 'default',  // Use Windows Authentication
+        options: {
+            trustedConnection: true,
+        },
     },
 };
 
@@ -39,8 +43,15 @@ app.post('/signup', async (req, res) => {
         // Connect to the database
         await sql.connect(config);
 
-        // Insert user data into the database
-        const result = await sql.query`INSERT INTO YourTableName (FirstName, LastName, Email, Password, Contact) VALUES (${firstName}, ${lastName}, ${email}, ${password}, ${contact})`;
+        // Insert user data using the stored procedure
+        const request = new sql.Request();
+        request.input('FirstName', sql.NVarChar, firstName);
+        request.input('LastName', sql.NVarChar, lastName);
+        request.input('Email', sql.NVarChar, email);
+        request.input('Password', sql.NVarChar, password);
+        request.input('Contact', sql.NVarChar, contact);
+
+        const result = await request.execute('InsertUser');
 
         console.log(result);
 
