@@ -317,8 +317,8 @@ html, body{width:100%; height:100%;}
 .icons{font-size:17px;}
 .parallax {background-repeat: no-repeat; background-position: top center; background-size: cover; width:100%; height:89%;}
 .sets label {font-size:35px; font-family:'Oswald', sans-serif;; text-transform: uppercase; color: #a21e22; line-height: 1.2; margin: 190px 0 10px 0;}
-.sets label span{font-size:25px; display:block; color:#0a4166;}
-.sets p {font-size: 15px; margin-top:21px; font-family: 'PT Sans', sans-serif; font-weight:700; letter-spacing: 3px; line-height: 1.5; margin-bottom: 30px; color:#333;}
+.sets label span{font-size:25px; display:block; color:whitesmoke;}
+.sets p {font-size: 15px; margin-top:21px; font-family: 'PT Sans', sans-serif; font-weight:700; letter-spacing: 3px; line-height: 1.5; margin-bottom: 30px; color:whitesmoke;}
 .sets .btn-default{background-color:#a21e22; border:1px #a21e22 solid; transition: all .5s ease; border-radius:0; color:#fff; text-transform:uppercase;}
 .sets .btn-default:hover{background-color:#0a4166;}
 .sets .btn-info{background-color:#0a4166; border:1px #0a4166 solid; transition: all .5s ease; border-radius:0; color:#fff; text-transform:uppercase;}
